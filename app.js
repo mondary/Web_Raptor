@@ -128,41 +128,70 @@ document.addEventListener('DOMContentLoaded', () => {
             // Étape 0 : Maintenance
             const maintenanceDiv = document.createElement('div');
             maintenanceDiv.className = 'protocol-step-result';
-            maintenanceDiv.innerHTML = `<h3>Étape 0 : Maintenance</h3>
-                <p><strong>Calories Cibles :</strong> ${dej.toFixed(0)} kcal</p>
-                <p><strong>Protéines Cibles :</strong> ${proteinesMaintenance.toFixed(0)} g</p>
-                <p><strong>Lipides Cibles :</strong> ${lipidesMaintenance.toFixed(0)} g</p>
-                <p><strong>Glucides Cibles :</strong> ${glucidesMaintenance.toFixed(0)} g</p>
+            maintenanceDiv.innerHTML = `
+              <div class="step-card">
+                <div class="step-card-header">
+                  <span class="step-card-title">Étape 0 : Maintenance</span>
+                  <span class="step-card-badge">=</span>
+                </div>
+                <div class="step-card-main">${dej.toFixed(0)} <span class="step-card-unit">kcal</span></div>
+                <div class="step-card-minor">
+                  <span>Protéines : ${proteinesMaintenance.toFixed(0)} g</span> · 
+                  <span>Lipides : ${lipidesMaintenance.toFixed(0)} g</span> · 
+                  <span>Glucides : ${glucidesMaintenance.toFixed(0)} g</span>
+                </div>
+              </div>
             `;
             protocolStepsResultsContainerEl.appendChild(maintenanceDiv);
     
             // Étapes du protocole
             protocol.steps.forEach((step, idx) => {
-                const stepDiv = document.createElement('div');
-                stepDiv.className = 'protocol-step-result';
-                stepDiv.innerHTML = `<h3>Étape ${idx + 1} : ${step.name}</h3>`;
+              const stepDiv = document.createElement('div');
+              stepDiv.className = 'protocol-step-result';
     
-                if (step.calorieMod === "X" || step.glucidesModRatio === "X") {
-                    stepDiv.innerHTML += `
-                        <p><strong>Calories Cibles :</strong> X</p>
-                        <p><strong>Protéines Cibles :</strong> X</p>
-                        <p><strong>Lipides Cibles :</strong> X</p>
-                        <p><strong>Glucides Cibles :</strong> X</p>
-                    `;
-                } else {
-                    const caloriesCibles = dej + step.calorieMod;
-                    const proteinesGrammesCibles = proteinesMaintenance;
-                    const lipidesGrammesCibles = lipidesMaintenance;
-                    const glucidesGrammesCibles = glucidesMaintenance + step.glucidesModRatio;
+              let badge = '';
+              if (step.calorieMod === "X") badge = 'X';
+              else if (step.calorieMod === 0) badge = '=';
+              else if (step.calorieMod > 0) badge = `+${step.calorieMod}`;
+              else badge = `${step.calorieMod}`;
     
-                    stepDiv.innerHTML += `
-                        <p><strong>Calories Cibles :</strong> ${caloriesCibles.toFixed(0)} kcal</p>
-                        <p><strong>Protéines Cibles :</strong> ${proteinesGrammesCibles.toFixed(0)} g</p>
-                        <p><strong>Lipides Cibles :</strong> ${lipidesGrammesCibles.toFixed(0)} g</p>
-                        <p><strong>Glucides Cibles :</strong> ${glucidesGrammesCibles.toFixed(0)} g</p>
-                    `;
-                }
-                protocolStepsResultsContainerEl.appendChild(stepDiv);
+              if (step.calorieMod === "X" || step.glucidesModRatio === "X") {
+                stepDiv.innerHTML = `
+                  <div class="step-card">
+                    <div class="step-card-header">
+                      <span class="step-card-title">Étape ${idx + 1} : ${step.name}</span>
+                      <span class="step-card-badge">${badge} kcal</span>
+                    </div>
+                    <div class="step-card-main">X <span class="step-card-unit">kcal</span></div>
+                    <div class="step-card-minor">
+                      <span>Protéines : X g</span> · 
+                      <span>Lipides : X g</span> · 
+                      <span>Glucides : X g</span>
+                    </div>
+                  </div>
+                `;
+              } else {
+                const caloriesCibles = dej + step.calorieMod;
+                const proteinesGrammesCibles = proteinesMaintenance;
+                const lipidesGrammesCibles = lipidesMaintenance;
+                const glucidesGrammesCibles = glucidesMaintenance + step.glucidesModRatio;
+    
+                stepDiv.innerHTML = `
+                  <div class="step-card">
+                    <div class="step-card-header">
+                      <span class="step-card-title">Étape ${idx + 1} : ${step.name}</span>
+                      <span class="step-card-badge">${badge} kcal</span>
+                    </div>
+                    <div class="step-card-main">${caloriesCibles.toFixed(0)} <span class="step-card-unit">kcal</span></div>
+                    <div class="step-card-minor">
+                      <span>Protéines : ${proteinesGrammesCibles.toFixed(0)} g</span> · 
+                      <span>Lipides : ${lipidesGrammesCibles.toFixed(0)} g</span> · 
+                      <span>Glucides : ${glucidesGrammesCibles.toFixed(0)} g</span>
+                    </div>
+                  </div>
+                `;
+              }
+              protocolStepsResultsContainerEl.appendChild(stepDiv);
             });
         } else {
             objectiveTitleEl.style.display = 'none';

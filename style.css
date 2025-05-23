@@ -416,3 +416,125 @@ select {
     gap: 0.5rem;
   }
 }
+
+.step-card {
+  background: #fff;
+  border-radius: 1.1rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  padding: 1.1rem 1.3rem 1rem 1.3rem;
+  margin-bottom: 0.7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.step-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.2rem;
+}
+
+.step-card-title {
+  font-size: 1.05rem;
+  color: #222;
+  font-weight: 600;
+}
+
+.step-card-badge {
+  background: #f6f6f6;
+  color: #222;
+  font-size: 0.98rem;
+  font-weight: 600;
+  border-radius: 0.7em;
+  padding: 0.18em 0.8em;
+  border: 1px solid #eee;
+  display: inline-block;
+}
+
+.step-card-main {
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 0.1rem;
+  line-height: 1.1;
+}
+
+.step-card-unit {
+  font-size: 1.1rem;
+  color: #888;
+  font-weight: 500;
+  margin-left: 0.2em;
+}
+
+.step-card-minor {
+  font-size: 1.01rem;
+  color: #888;
+  font-weight: 500;
+  margin-top: 0.1rem;
+  display: flex;
+  gap: 1.1em;
+  flex-wrap: wrap;
+}
+.data-tile {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  padding: 1.7rem 1.5rem 1.2rem 1.5rem;
+  margin-bottom: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+.data-tile-header h2 {
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 0.7rem;
+  letter-spacing: 0.01em;
+}
+.data-tile-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.data-tile-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 1.05rem;
+  color: var(--foreground);
+  padding: 0.35rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.data-tile-row:last-child {
+  border-bottom: none;
+}
+.data-tile-value {
+  font-weight: 600;
+  font-size: 1.13rem;
+  color: var(--primary);
+  margin-left: 0.5rem;
+}
+.data-tile-unit {
+  font-size: 0.97rem;
+  color: var(--muted-foreground);
+  margin-left: 0.18rem;
+}
+.data-tile-macros {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.1rem;
+  font-size: 0.98rem;
+  color: var(--muted-foreground);
+  gap: 1.2rem;
+}
+@media (max-width: 700px) {
+  .data-tile {
+    padding: 1.1rem 0.7rem 1rem 0.7rem;
+  }
+  .data-tile-macros {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+}

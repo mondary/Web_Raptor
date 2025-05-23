@@ -48,19 +48,44 @@
         </form>
 
         <div id="results" style="display:none;">
-            <h2>Vos Données Calculées (Maintenance) :</h2>
-            <p><strong>Masse Grasse :</strong> <span id="masseGrasseResult"></span> kg</p>
-            <p><strong>Masse Maigre :</strong> <span id="masseMaigreResult"></span> kg</p>
-            <p><strong>Métabolisme Basal (Harris-Benedict) :</strong> <span id="bmrHarrisBenedictResult"></span> kcal</p>
-            <p><strong>Métabolisme Basal (Katch-McArdle - basé sur masse maigre) :</strong> <span id="bmrKatchMcArdleResult"></span> kcal</p>
-            <p><strong>Moyenne des Métabolismes Basaux :</strong> <span id="moyenneBmrResult"></span> kcal</p>
-            <p><strong>Dépense Énergétique Quotidienne (DEJ) / Maintenance :</strong> <span id="dejResult"></span> kcal</p>
-            <p><em>Protéines Maintenance: <span id="proteinesMaintenanceResult"></span> g, Lipides Maintenance: <span id="lipidesMaintenanceResult"></span> g, Glucides Maintenance: <span id="glucidesMaintenanceResult"></span> g</em></p>
-            
-            <h2 id="objectiveTitle" style="display:none;">Résultats pour : <span id="protocolNameResult"></span></h2>
-            <div id="protocolStepsResultsContainer">
-                <!-- Les résultats des étapes du protocole seront injectés ici par JavaScript -->
+            <div class="data-tile">
+                <div class="data-tile-header">
+                    <h2>Vos Données Calculées</h2>
+                </div>
+                <div class="data-tile-content">
+                    <div class="data-tile-row">
+                        <span>Masse Grasse</span>
+                        <span id="masseGrasseResult" class="data-tile-value"></span><span class="data-tile-unit">kg</span>
+                    </div>
+                    <div class="data-tile-row">
+                        <span>Masse Maigre</span>
+                        <span id="masseMaigreResult" class="data-tile-value"></span><span class="data-tile-unit">kg</span>
+                    </div>
+                    <div class="data-tile-row">
+                        <span>BMR (Harris-Benedict)</span>
+                        <span id="bmrHarrisBenedictResult" class="data-tile-value"></span><span class="data-tile-unit">kcal</span>
+                    </div>
+                    <div class="data-tile-row">
+                        <span>BMR (Katch-McArdle)</span>
+                        <span id="bmrKatchMcArdleResult" class="data-tile-value"></span><span class="data-tile-unit">kcal</span>
+                    </div>
+                    <div class="data-tile-row">
+                        <span>Moyenne BMR</span>
+                        <span id="moyenneBmrResult" class="data-tile-value"></span><span class="data-tile-unit">kcal</span>
+                    </div>
+                    <div class="data-tile-row">
+                        <span>DEJ / Maintenance</span>
+                        <span id="dejResult" class="data-tile-value"></span><span class="data-tile-unit">kcal</span>
+                    </div>
+                    <div class="data-tile-macros">
+                        <span>Protéines : <span id="proteinesMaintenanceResult"></span> g</span>
+                        <span>Lipides : <span id="lipidesMaintenanceResult"></span> g</span>
+                        <span>Glucides : <span id="glucidesMaintenanceResult"></span> g</span>
+                    </div>
+                </div>
             </div>
+            <h2 id="objectiveTitle" style="display:none;">Résultats pour : <span id="protocolNameResult"></span></h2>
+            <div id="protocolStepsResultsContainer"></div>
         </div>
     </div>
 
