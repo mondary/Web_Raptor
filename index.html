@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suivi Nutritionnel & Activité</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div class="container">
+        <h1>Mon Suivi Personnalisé</h1>
+
+        <form id="userInfoForm">
+            <h2>Informations Personnelles</h2>
+            <div>
+                <label for="prenom">Prénom :</label>
+                <input type="text" id="prenom" name="prenom" value="Clement" required>
+            </div>
+            <div>
+                <label for="age">Âge (années) :</label>
+                <input type="number" id="age" name="age" value="41" required>
+            </div>
+            <div>
+                <label for="taille">Taille (mètres, ex: 1.80) :</label>
+                <input type="number" id="taille" name="taille" step="0.01" value="1.80" required>
+            </div>
+            <div>
+                <label for="poids">Poids (kilos, ex: 70) :</label>
+                <input type="number" id="poids" name="poids" step="0.1" value="84.0" required>
+            </div>
+            <div>
+                <label for="bodyfat">Bodyfat (%) :</label>
+                <input type="number" id="bodyfat" name="bodyfat" step="0.1" value="23" required>
+            </div>
+
+            <h2>Objectif</h2>
+            <div class="protocol-toggle" id="protocolToggle">
+              <button type="button" class="protocol-btn selected" data-value="priseDeMusclePropre"><span class="protocol-num">1</span> Prise de muscle propre</button>
+              <button type="button" class="protocol-btn" data-value="recompositionCorporelle"><span class="protocol-num">2</span> Recomposition corporelle</button>
+              <button type="button" class="protocol-btn" data-value="deficitParfait"><span class="protocol-num">3</span> Déficit parfait</button>
+              <button type="button" class="protocol-btn" data-value="perteGrasProgressive"><span class="protocol-num">4</span> Perte de gras progressive</button>
+              <input type="hidden" id="objective" name="objective" value="priseDeMusclePropre" />
+            </div>
+            <!-- Le div stepSelection est supprimé -->
+
+            <!-- Le bouton est supprimé -->
+        </form>
+
+        <div id="results" style="display:none;">
+            <h2>Vos Données Calculées (Maintenance) :</h2>
+            <p><strong>Masse Grasse :</strong> <span id="masseGrasseResult"></span> kg</p>
+            <p><strong>Masse Maigre :</strong> <span id="masseMaigreResult"></span> kg</p>
+            <p><strong>Métabolisme Basal (Harris-Benedict) :</strong> <span id="bmrHarrisBenedictResult"></span> kcal</p>
+            <p><strong>Métabolisme Basal (Katch-McArdle - basé sur masse maigre) :</strong> <span id="bmrKatchMcArdleResult"></span> kcal</p>
+            <p><strong>Moyenne des Métabolismes Basaux :</strong> <span id="moyenneBmrResult"></span> kcal</p>
+            <p><strong>Dépense Énergétique Quotidienne (DEJ) / Maintenance :</strong> <span id="dejResult"></span> kcal</p>
+            <p><em>Protéines Maintenance: <span id="proteinesMaintenanceResult"></span> g, Lipides Maintenance: <span id="lipidesMaintenanceResult"></span> g, Glucides Maintenance: <span id="glucidesMaintenanceResult"></span> g</em></p>
+            
+            <h2 id="objectiveTitle" style="display:none;">Résultats pour : <span id="protocolNameResult"></span></h2>
+            <div id="protocolStepsResultsContainer">
+                <!-- Les résultats des étapes du protocole seront injectés ici par JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

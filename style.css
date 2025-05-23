@@ -1,0 +1,418 @@
+:root {
+  --background: #fff;
+  --foreground: #111;
+  --card: #fff;
+  --muted: #f6f6f6;
+  --muted-foreground: #888;
+  --primary: #111;
+  --primary-foreground: #fff;
+  --border: #e5e5e5;
+  --radius: 0.8rem;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  background: var(--background);
+  color: var(--foreground);
+  min-height: 100vh;
+  padding: 32px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 900px) {
+  .container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+h1 {
+  font-size: 2.1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--foreground);
+  letter-spacing: -0.5px;
+  grid-column: 1/-1;
+}
+
+.subtitle {
+  color: var(--muted-foreground);
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  grid-column: 1/-1;
+}
+
+.card-section {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  border: none;
+  padding: 1.5rem 1.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.card-section h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--foreground);
+  margin-bottom: 0.7rem;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.form-row > div {
+  flex: 1;
+}
+
+label {
+  font-size: 0.97rem;
+  color: var(--muted-foreground);
+  margin-bottom: 0.18rem;
+  display: block;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: none;
+  border-radius: calc(var(--radius) - 3px);
+  background: var(--muted);
+  color: var(--foreground);
+  font-size: 1.05rem;
+  transition: background 0.2s;
+  margin-bottom: 0.1rem;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+  outline: none;
+  background: #eaeaea;
+}
+
+select {
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="black" height="16" viewBox="0 0 20 20" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M7.293 7.293a1 1 0 011.414 0L10 8.586l1.293-1.293a1 1 0 111.414 1.414l-2 2a1 1 0 01-1.414 0l-2-2a1 1 0 010-1.414z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em;
+  padding-right: 2.5rem;
+}
+
+#results {
+  padding-top: 0;
+  border-top: none;
+}
+
+#results h2 {
+  font-size: 1.1rem;
+  color: var(--foreground);
+  margin-bottom: 0.7rem;
+  font-weight: 600;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+#results > p {
+  background: var(--muted);
+  border-radius: var(--radius);
+  padding: 0.8rem 1.1rem;
+  margin-bottom: 0.7rem;
+  font-size: 1.05rem;
+  color: var(--foreground);
+  line-height: 1.5;
+  border: none;
+}
+
+#results > p strong {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+#results > p em {
+  display: block;
+  margin-top: 0.2rem;
+  color: var(--muted-foreground);
+  font-size: 0.97rem;
+}
+
+#objectiveTitle {
+  font-size: 1.13rem;
+  color: var(--primary);
+  font-weight: 700;
+  margin: 1rem 0 0.7rem 0;
+  text-align: center;
+}
+
+.protocol-step-result {
+  background: var(--card);
+  border-radius: var(--radius);
+  border: none;
+  padding: 1rem 1.1rem;
+  margin-bottom: 0.7rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+}
+
+.protocol-step-result h3 {
+  font-size: 1.05rem;
+  color: var(--primary);
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.protocol-step-result p {
+  font-size: 1.05rem;
+  color: var(--foreground);
+  margin-bottom: 0.2rem;
+}
+
+.graph-block {
+  width: 100%;
+  min-height: 120px;
+  background: var(--muted);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    padding: 0 0.5rem;
+  }
+  .card-section {
+    padding: 1.1rem 0.6rem;
+  }
+  h1, .subtitle {
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+  }
+  .form-row {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+}
+
+.info-perso {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  border: none;
+  background: #fff;
+  border-radius: 1.1rem;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.info-perso h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 1.2rem;
+  letter-spacing: -0.5px;
+  border: none;
+  padding-bottom: 0;
+}
+
+.info-perso .form-row {
+  display: flex;
+  gap: 1.2rem;
+  margin-bottom: 1.1rem;
+}
+
+.info-perso .form-row > div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.info-perso label {
+  font-size: 1rem;
+  color: #888;
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.info-perso input[type="text"],
+.info-perso input[type="number"] {
+  width: 100%;
+  padding: 0.85rem 1.1rem;
+  border: none;
+  border-radius: 0.7rem;
+  background: #f6f6f6;
+  color: #111;
+  font-size: 1.08rem;
+  transition: background 0.2s;
+  margin-bottom: 0.1rem;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.01);
+}
+
+.info-perso input[type="text"]:focus,
+.info-perso input[type="number"]:focus {
+  outline: none;
+  background: #ededed;
+}
+
+@media (max-width: 700px) {
+  .info-perso {
+    padding: 1.2rem 0.7rem 1rem 0.7rem;
+  }
+  .info-perso .form-row {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+.protocol-toggle {
+  display: flex;
+  gap: 0.7rem;
+  margin-bottom: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.protocol-btn {
+  background: #fff;
+  color: #111;
+  border: 1.5px solid #e5e5e5;
+  border-radius: 0.7rem;
+  padding: 0.7rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border 0.15s;
+  outline: none;
+}
+
+.protocol-btn .protocol-num {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 1.05em;
+  width: 1.7em;
+  height: 1.7em;
+  line-height: 1.7em;
+  text-align: center;
+  border-radius: 50%;
+  background: #f6f6f6;
+  color: #111;
+  margin-right: 0.7em;
+  transition: background 0.15s, color 0.15s;
+}
+
+.protocol-btn.selected .protocol-num {
+  background: #fff;
+  color: #111;
+}
+.protocol-btn.selected,
+.protocol-btn:active {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
+
+.protocol-btn:focus-visible {
+  box-shadow: 0 0 0 2px #1112;
+}
+
+@media (max-width: 700px) {
+  .protocol-toggle {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .protocol-btn {
+    width: 100%;
+    text-align: left;
+  }
+}
+
+.input-row {
+  display: flex;
+  gap: 1.2rem;
+  margin-bottom: 1.1rem;
+}
+
+.input-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  font-size: 1rem;
+  color: #222;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  letter-spacing: 0.01em;
+}
+
+.input-group input,
+.input-group select {
+  width: 100%;
+  padding: 0.85rem 1.1rem;
+  border: none;
+  border-radius: 0.7rem;
+  background: #f6f6f6;
+  color: #111;
+  font-size: 1.08rem;
+  transition: background 0.2s;
+  margin-bottom: 0.1rem;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.01);
+}
+
+.input-group input::placeholder,
+.input-group select:invalid {
+  color: #bbb;
+  opacity: 1;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+  outline: none;
+  background: #ededed;
+}
+
+.input-group select {
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="gray" height="16" viewBox="0 0 20 20" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M7.293 7.293a1 1 0 011.414 0L10 8.586l1.293-1.293a1 1 0 111.414 1.414l-2 2a1 1 0 01-1.414 0l-2-2a1 1 0 010-1.414z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em;
+  padding-right: 2.5rem;
+}
+
+@media (max-width: 700px) {
+  .input-row {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
